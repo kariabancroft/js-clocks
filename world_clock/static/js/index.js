@@ -1,53 +1,21 @@
-// document.addEventListener('DOMContentLoaded', function(){
+function displayTimeRewrite(timeZoneArray) {
+  var currentTime, timezone;
+  var options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
 
-    // With this function we will assemble our clock,
-    // calling up whole date and then hours, minutes,
-    // and seconds individually.
+  for (var i = 0; i < timeZoneArray.length; i++) {
+    options.timeZone = timeZoneArray[i][0];
+    currentTime = new Date().toLocaleString('en-US', options);
+    timezone = timeZoneArray[i][1];
 
-    function displayTime(clock_num) {
-      var currentTime, timezone;
-      var options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    var clockDiv = document.getElementById('clock_' + (i + 1));
+    clockDiv.innerText = timezone + "\n" + currentTime;
+  }
+}
 
-        switch (clock_num) {
-          case 1:
-            options.timeZone = "America/Los_Angeles";
-            currentTime = new Date().toLocaleString('en-US', options);
-            timezone = "West Coast";
-            break;
-          case 2:
-            options.timeZone = "America/New_York";
-            currentTime = new Date().toLocaleString('en-US', options);
-            timezone = "East Coast";
-            break;
-          case 3:
-            options.timeZone = 'Asia/Jakarta';
-            currentTime = new Date().toLocaleString('en-US', options);
-            timezone = "Asia";
-            break;
-          case 4:
-            options.timeZone = 'Pacific/Honolulu';
-            currentTime = new Date().toLocaleString('en-US', options);
-            timezone = "Hawaii";
-            break;
-          default:
-            currentTime = new Date();
-            timezone = "N/A";
-            break;
-        }
+var tzList = [["America/Los_Angeles", "West Coast"],
+  ["America/New_York", "East Coast"],
+  ["Asia/Jakarta", "Indonesia Western"],
+  ["Pacific/Honolulu", "Hawaii"]];
 
-        // This gets a "handle" to the clock div in our HTML
-        var clockDiv = document.getElementById('clock_' + clock_num);
-
-        // Then we set the text inside the clock div
-        // to the hours, minutes, and seconds of the current time
-
-        clockDiv.innerText = timezone + "\n" + currentTime;
-        // getTimeString(currentTime);
-    }
-
-    for (var i = 1; i < 5; i++) {
-      displayTime(i);
-      setInterval(displayTime, 1000, i);
-    }
-
-// });
+displayTimeRewrite(tzList);
+setInterval(displayTimeRewrite, 1000, tzList);
