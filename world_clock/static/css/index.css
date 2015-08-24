@@ -1,0 +1,48 @@
+/*
+body {
+    background-color: #80d4ea;
+}*/
+div {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}
+
+/* #div1 { background: #DDD; }
+#div2 { background: #AAA; }
+#div3 { background: #777; }
+#div4 { background: #444; }
+
+background-color: #80d4ea;
+
+*/
+
+.clock {
+    font-family: courier, monospace;
+    text-align: center;
+
+    font-size: 50px;
+}
+#clock_1 {
+  background-color: #80d4ea;
+  color: white;
+  float: left;
+}
+
+#clock_2 {
+  background-color: #FFCC66;
+  color: #99CCFF;
+  float: left;
+}
+
+#clock_3 {
+  background-color: #FFFF66;
+  color: pink;
+  float: right;
+}
+
+#clock_4 {
+  background-color: #CC99FF;
+  color: white;
+  float: right;
+}
